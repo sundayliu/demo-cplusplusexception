@@ -1,36 +1,55 @@
-#include "utils.h"
-#include "test.h"
-#include <stdio.h>
-using namespace hello;
+#include <iostream>
+#include <cstdio>
+#include <stdexcept>
 
-void HandlePerson(const Person& person)
+using namespace std;
+
+int hello(int a, int b)
 {
-	person.go();
+    int r = 0;
+    try
+    {
+        r = a / b;
+    }
+    catch(int IntegerException)
+    {
+        cout << "IntegerException" << endl;
+    }
+    catch(overflow_error& e)
+    {
+        cout << e.what() << endl;
+        b = 2;
+    }
+    catch(...)
+    {
+        b = 1;
+    }
+    
+    return r;
 }
 
-int hello_main()
+class A
 {
-    const char* desc = "Hello,world\n";
-	print(desc, strlen(desc));
-
-	Test a;
-	Test b(1);
-
-	int ID_a = a.getId();
-	int ID_b = b.getId();
-
-	int ID_sum = ID_a + ID_b;
-
-	a.setId(ID_sum);
-	b.setId(ID_sum);
-
-	printf("a id:%d\n", a.getId());
-	printf("b id:%d\n", b.getId());
-
-	Man man;
-	Woman woman;
-	HandlePerson(man);
-	HandlePerson(woman);
+public:
+    A(){cout << "constructor" << endl;}
+    A(int id):m_id(id){cout << "constructor" << endl;}
+    ~A(){cout << "destructor" << endl;}
+    
+    int getId(){return m_id;}
+    void setId(int id){m_id = id;}
+    
+private:
+    int m_id;
+    
+};
+int main(int argc, char* argv[])
+{
+    int r = hello(3,0);
+    cout << r << endl;
+    
+    A a(3);
+    
+    cout << a.getId() << endl;
 
     return 0;
 }

@@ -17,3 +17,8 @@ LOCAL_SRC_FILES:=test.cpp main.cpp utils.cpp
 
 include $(BUILD_SHARED_LIBRARY)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE:=hello
+LOCAL_SRC_FILES:=main_hello.cpp
+include $(BUILD_EXECUTABLE)
+

@@ -7,7 +7,7 @@ APP_STL:=gnustl_static
 APP_CPPFLAGS:=-fexceptions -frtti
 #APP_OPTIM:=debug
 
-NDK_TOOLCHAIN_VERSION:=clang3.5
+#NDK_TOOLCHAIN_VERSION:=clang3.5
 #NDK_TOOLCHAIN_VERSION:=clang3.4
 
 # include $(BUILD_EXECUTABLE)
