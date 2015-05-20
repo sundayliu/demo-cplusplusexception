@@ -4,11 +4,12 @@
 
 using namespace std;
 
-int hello(int a, int b)
+int hello(int a, int b)throw()
 {
     int r = 0;
     try
     {
+        //throw 1;
         r = a / b;
     }
     catch(int IntegerException)
@@ -47,6 +48,7 @@ int main(int argc, char* argv[])
     int r = hello(3,0);
     cout << r << endl;
     
+    A b;
     A a(3);
     
     cout << a.getId() << endl;
